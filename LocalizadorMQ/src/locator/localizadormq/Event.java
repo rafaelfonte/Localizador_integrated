@@ -12,6 +12,7 @@ public class Event {
 	String name;
 	int roomId;
 	Date date;
+	Date duration;
 	//Date?
 	static ArrayList<Event> allEvents = new ArrayList<Event>();
 	public Event(int rm, String dateString)
@@ -26,6 +27,26 @@ public class Event {
 			//date = simpleDateFormat.parse("2014-12-25 14:00:00");
 
 			date = simpleDateFormat.parse(dateString);
+		}
+		catch (Exception e)
+		{
+			System.out.println("Problem parsing date");
+		}
+			//System.out.println(date);
+		allEvents.add(this);
+	}
+	public Event(int rm, String dateString,String durationString)
+	{
+		roomId = rm;
+		name = "Event"+roomId;
+		//date = new Date("2014-12-25 14:00:00");
+		//date = Date.valueOf("2014-12-25 14:00:00");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss",Locale.getDefault());
+		SimpleDateFormat simpleDurationFormat = new SimpleDateFormat("HH:mm:ss",Locale.getDefault());
+		try
+		{
+			date = simpleDateFormat.parse(dateString);
+			duration = simpleDurationFormat.parse(durationString);
 		}
 		catch (Exception e)
 		{

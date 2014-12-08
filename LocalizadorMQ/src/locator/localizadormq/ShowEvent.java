@@ -17,6 +17,7 @@ public class ShowEvent extends BasicMap{
 	Button subscribeButton;
 	TextView subscribeText;
 	TextView dateText;
+	TextView durationText;
 	TextView roomName;
 	TextView name;
 	Event showedEvent;
@@ -37,14 +38,18 @@ public class ShowEvent extends BasicMap{
 		room.draw(map);
 		roomName = (TextView) findViewById(R.id.showEventRoom);
 		roomName.setText(room.name);
+		
 		dateText = (TextView) findViewById(R.id.showEventDate);	
+		durationText = (TextView) findViewById(R.id.showEventDuration);	
 		SimpleDateFormat timeFormat = new SimpleDateFormat("dd/MM/yy HH:mm",Locale.getDefault());
+		SimpleDateFormat durationFormat = new SimpleDateFormat("HH:mm:ss",Locale.getDefault());
 		
 		String str = timeFormat.format(showedEvent.date);
+		String durationStr = durationFormat.format(showedEvent.duration);
 		dateText.setText(str);
-    	
-    	
-    	boolean subscribed = false;
+		durationText.setText(durationStr);
+		
+    	boolean subscribed = User.mainUser.checkSubscription(showedEvent);
     	subscribeButton = (Button) findViewById(R.id.subscribeButton);
     	subscribeText = (TextView) findViewById(R.id.subscribeText);
     	
@@ -63,6 +68,7 @@ public class ShowEvent extends BasicMap{
     	subscribeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
           	  Toast.makeText(getApplicationContext(), "Subscribing...", Toast.LENGTH_SHORT).show();
+          	  User.mainUser.unsubscribe(showedEvent);
           	  setUnsubscribeButton();
             }
         });
@@ -75,6 +81,7 @@ public class ShowEvent extends BasicMap{
     	subscribeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
           	  Toast.makeText(getApplicationContext(), "Unsubscribing...", Toast.LENGTH_SHORT).show();
+          	  User.mainUser.addEvent(showedEvent);
           	  setSubscribeButton();
             }
         });

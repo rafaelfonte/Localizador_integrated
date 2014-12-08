@@ -69,7 +69,13 @@ public class User {
 			chosenEvent.setSpecialRoom(map);
 		}
 	}
-	
-	//Função para procurar os eventos num determinado intervalo de tempo
+	public boolean checkSubscription(Event e)
+	{
+		return events.contains(e);
+	}
+	public boolean unsubscribe(Event e)
+	{
+		return events.remove(e);
+	}
 	
 }

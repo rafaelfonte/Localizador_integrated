@@ -33,6 +33,10 @@ public class MainActivity extends Activity {
               //Toast.makeText(application_ctx = getApplicationContext(), "Logging in...", Toast.LENGTH_SHORT).show();
               String username = ((EditText)findViewById(R.id.username_field)).getText().toString();
               String password = ((EditText)findViewById(R.id.password_field)).getText().toString();
+              //Remove this before pushing
+              load(username,password);
+              startActivity(intent);
+              //End of removal part
               String[] result_attempt = null;
               //Autenticacao
               try {
@@ -73,7 +77,7 @@ public class MainActivity extends Activity {
 	      Event eventArray[] = new Event[12] ;
 	      for(int i=0;i<12;i++)
 	      {
-		      	eventArray[i] = new Event(i%14,"2014-"+(i+1)+"-25 14:00:00");
+		      	eventArray[i] = new Event(i%14,"2014-"+(i+1)+"-25 14:00:00","01:50:00");
 		      	User.mainUser.addEvent(eventArray[i]);
 	      }
 	      
