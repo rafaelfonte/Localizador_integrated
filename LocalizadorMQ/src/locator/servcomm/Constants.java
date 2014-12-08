@@ -21,4 +21,12 @@ public class Constants {
     public static final String ctUpdateEventMsg = "UPDATE_EVENT";
 
 
+    public static final int ctSignUpAct      =  0;
+    public static final int ctAuthAct        =  1;
+    public static final int ctGetAct         =  2;
+    public static final int ctMakeEventAct   =  3;
+    public static final int ctSubsEventAct   =  4;
+    public static final int ctUnsubsEventAct =  5;
+    public static final int ctUpdateEventAct =  6;
+
 }

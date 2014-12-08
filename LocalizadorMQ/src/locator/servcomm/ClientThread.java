@@ -1,5 +1,6 @@
 package locator.servcomm;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,7 +12,7 @@ import org.json.JSONObject;
 import java.io.*;
 import java.net.*;
 //Call with (new ClientThread()).execute(new String("blasdas"));
-public class ClientThread extends AsyncTask<String,Void,String> {
+public class ClientThread extends AsyncTask<String,Void,String[]> {
     private Context myContext;
     private boolean exists = false;
     private Socket sock;
@@ -19,10 +20,48 @@ public class ClientThread extends AsyncTask<String,Void,String> {
     private DataInputStream is;
     private SocketAddress sockaddr;
     private int timeoutMs = 2000;   // 2 seconds
+    private int actionToPerform;
+    private String [] act_args;
+
+
+    private ProgressDialog dialog;
+
+    public ClientThread(Context cx, int action, String args[]){
+        myContext = cx;
+        actionToPerform = action;
+        act_args = args;
+    }
 
     @Override
-    protected String doInBackground(String... v){
-        String resultStr = "";
+    protected void onPreExecute(){
+        this.dialog = new ProgressDialog(myContext);
+        switch(actionToPerform){
+            case Constants.ctSignUpAct:
+                this.dialog.setMessage("Signing up...");
+                break;
+            case Constants.ctAuthAct:
+                this.dialog.setMessage("Authenticating...");
+                break;
+            case Constants.ctGetAct:
+                this.dialog.setMessage("Fetching events...");
+                break;
+            case Constants.ctSubsEventAct:
+                this.dialog.setMessage("Subscribing...");
+                break;
+            case Constants.ctUnsubsEventAct:
+                this.dialog.setMessage("Unsubscribing...");
+                break;
+            case Constants.ctMakeEventAct:
+                this.dialog.setMessage("Making event...");
+                break;
+            default:
+
+        }
+        this.dialog.show();
+    }
+    @Override
+    protected String[] doInBackground(String... v){
+        String [] resultStr = null;
         try{
             sockaddr = new InetSocketAddress(Constants.SRV_IP,Constants.SRV_PORT);
             sock = new Socket();
@@ -30,29 +69,46 @@ public class ClientThread extends AsyncTask<String,Void,String> {
             writer = new PrintWriter(new OutputStreamWriter(sock.getOutputStream()));
             is = new DataInputStream(sock.getInputStream());
 
+            System.out.println();
+            switch(actionToPerform){
+                case Constants.ctSignUpAct:
+                    System.out.println("Signing up...");
+                    resultStr = signUp(act_args[0],act_args[1]);
+                    break;
+                case Constants.ctAuthAct:
+                    System.out.println("Authenticating...");
+                    resultStr = authenticate(act_args[0],act_args[1]);
+                    break;
+                case Constants.ctGetAct:
+                    System.out.println("Fetching events...");
+                    resultStr = authenticate(act_args[0],act_args[1]);
+                    if(resultStr[0].equals(Constants.ctHelloMsg))
+                        resultStr = getEvents(act_args[0]);
+                    break;
+                case Constants.ctSubsEventAct:
+                    System.out.println("Subscribing...");
+                    resultStr = authenticate(act_args[0],act_args[1]);
+                    if(resultStr[0].equals(Constants.ctHelloMsg))
+                        resultStr = subscribeEvent(act_args[0],act_args[2]);
+                    break;
+                case Constants.ctUnsubsEventAct:
+                    System.out.println("Unsubscribing...");
+                    resultStr = authenticate(act_args[0],act_args[1]);
+                    if(resultStr[0].equals(Constants.ctHelloMsg))
+                        resultStr = subscribeEvent(act_args[0],act_args[2]);
+                    break;
+                case Constants.ctMakeEventAct:
+                    System.out.println("Making event...");
+                    resultStr = authenticate(act_args[0],act_args[1]);
+                    if(resultStr[0].equals(Constants.ctHelloMsg))
+                        resultStr = makeEvent(act_args[2],act_args[3],act_args[4],act_args[5],act_args[6],act_args[7],act_args[8]);
+                    break;
+                default:
 
-            //signUp("nicolas","password");
-            authenticate("nicolas","password");
-            makeEvent("1","nome do evento","30","uma coisa louca la","2014-12-25 14:00","2 hours","true");
-            //Authenticate
-            //authenticate("rafael","password");
-            //authenticate("pangare", "password");
-            //makeEvent("1","nome do evento","30","uma coisa louca la","2014-12-25 14:00","2 hours","true");
-            //getEvents("pangare");
-            //unSubscribeEvent("deathadder","3");
-            //updateEvent("3","1","evento do gerson","30","uma coisa louca la","2014-11-27 14:00","2 hours","true");
-            //fetch
-
-            //
-            System.out.println("Authentication successful.");
-
-
-
-            exists = true;
+            }
             writer.close();
             is.close();
             sock.close();
-            resultStr = "Great success!";
         }
         catch(Exception e){
             System.out.println("Exception " + e);
@@ -60,7 +116,7 @@ public class ClientThread extends AsyncTask<String,Void,String> {
         return resultStr;
     }
 
-    public boolean authenticate(String user, String password) throws Exception{
+    public String[] authenticate(String user, String password) throws Exception{
             /*
             Request schema
             {
@@ -95,11 +151,11 @@ public class ClientThread extends AsyncTask<String,Void,String> {
         }
         else{
             System.out.println("Error: error returned - {(" + responseType + "),(" + responseMessage + ")}...");
-            return false;
+            return new String[]{Constants.ctErrorMsg,responseMessage};
         }
-        return true;
+        return new String[]{Constants.ctHelloMsg,responseMessage};
     }
-    public boolean signUp(String user, String password) throws Exception{
+    public String [] signUp(String user, String password) throws Exception{
             /*
             Request schema
             {
@@ -134,11 +190,11 @@ public class ClientThread extends AsyncTask<String,Void,String> {
         }
         else{
             System.out.println("Error: error returned - {(" + responseType + "),(" + responseMessage + ")}...");
-            return false;
+            return new String[]{Constants.ctErrorMsg,responseMessage};
         }
-        return true;
+        return new String[]{Constants.ctOkMsg,responseMessage};
     }
-    public boolean getEvents(String username) throws Exception{
+    public String[] getEvents(String username) throws Exception{
             /*
             Request schema
             {
@@ -180,11 +236,11 @@ private : ""
         }
         else{
             System.out.println("Error: error returned - {(" + responseType + "),(" + response.get("message") + ")}...");
-            return false;
+            return new String[]{Constants.ctErrorMsg,response.get("message").toString()};
         }
-        return true;
+        return new String[]{Constants.ctOkMsg,response.get("list_events").toString()};
     }
-    public boolean subscribeEvent(String username, String eventID) throws Exception{
+    public String[] subscribeEvent(String username, String eventID) throws Exception{
             /*
             Request schema
             {
@@ -218,12 +274,12 @@ private : ""
         }
         else{
             System.out.println("Error: error returned - {(" + responseType + "),(" + response.get("message") + ")}...");
-            return false;
+            return new String[]{Constants.ctErrorMsg,response.get("message").toString()};
         }
-        return true;
+        return new String[]{Constants.ctOkMsg,response.get("message").toString()};
     }
 
-    public boolean unSubscribeEvent(String username, String eventID) throws Exception{
+    public String[] unSubscribeEvent(String username, String eventID) throws Exception{
             /*
             Request schema
             {
@@ -257,14 +313,14 @@ private : ""
         }
         else{
             System.out.println("Error: error returned - {(" + responseType + "),(" + response.get("message") + ")}...");
-            return false;
+            return new String[]{Constants.ctErrorMsg,response.get("message").toString()};
         }
-        return true;
+        return new String[]{Constants.ctOkMsg,response.get("message").toString()};
     }
 
 
     //TODO: consider the possibility of making events...
-    public boolean makeEvent(String roomID, String ev_n, String capacity, String description, String timestamp, String duration, String priv) throws Exception{
+    public String[] makeEvent(String roomID, String ev_n, String capacity, String description, String timestamp, String duration, String priv) throws Exception{
 
             /*
             * {
@@ -313,13 +369,13 @@ message : "Sdadiasdia"
         }
         else{
             System.out.println("Error: error returned - {(" + responseType + "),(" + responseMessage + ")}...");
-            return false;
+            return new String[]{Constants.ctErrorMsg,response.get("message").toString()};
         }
-        return true;
+        return new String[]{Constants.ctOkMsg,response.get("message").toString()};
     }
 
 
-    public boolean updateEvent(String ID, String roomID, String ev_n, String capacity, String description, String timestamp, String duration, String priv) throws Exception{
+    public String[] updateEvent(String ID, String roomID, String ev_n, String capacity, String description, String timestamp, String duration, String priv) throws Exception{
 
             /*
             * {
@@ -369,9 +425,9 @@ message : "Sdadiasdia"
         }
         else{
             System.out.println("Error: error returned - {(" + responseType + "),(" + responseMessage + ")}...");
-            return false;
+            return new String[]{Constants.ctErrorMsg,response.get("message").toString()};
         }
-        return true;
+        return new String[]{Constants.ctOkMsg,response.get("message").toString()};
     }
         /*
         public boolean alterEvent(String user, String password) throws Exception{
@@ -410,8 +466,28 @@ message : "Sdadiasdia"
     }
 
     @Override
-    protected void onPostExecute(String result){
-        Toast.makeText(myContext,result + " resultado " + exists,100).show();
+    protected void onPostExecute(String [] result){
+        //Toast.makeText(myContext,result + " resultado " + exists,100).show();
+        if(dialog != null && dialog.isShowing()){
+            dialog.dismiss();
+        }
+        //System.out.println("Resultado : " + result[0]);
+        //System.out.println("MyAppContext : " + myContext);
+        //Toast.makeText(myContext,result[0],100).show();
     }
 
 }
+
+
+
+//signUp("nicolas","password");
+//authenticate("nicolas","password");
+//makeEvent("1","nome do evento","30","uma coisa louca la","2014-12-25 14:00","2 hours","true");
+//Authenticate
+//authenticate("rafael","password");
+//authenticate("pangare", "password");
+//makeEvent("1","nome do evento","30","uma coisa louca la","2014-12-25 14:00","2 hours","true");
+//getEvents("pangare");
+//unSubscribeEvent("deathadder","3");
+//updateEvent("3","1","evento do gerson","30","uma coisa louca la","2014-11-27 14:00","2 hours","true");
+//fetch
