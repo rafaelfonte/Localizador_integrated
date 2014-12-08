@@ -12,6 +12,14 @@
     <string name="showGroups">Show Groups</string>
     <string name="eventName">Event</string>
     <string name="api_key"></string>
+    
+    
+    
+    <string name="profileImageText">Avatar</string>
+    <string name="subscribeText">Subscribed</string>
+    <string name="eventButton">Button</string>
+    <string name="eventDuration">Duration</string>
+    <string name="eventDate">Date</string>
 
     <string-array name="nav_drawer_items">
         <item >Home</item>

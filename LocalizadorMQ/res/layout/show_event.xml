@@ -5,42 +5,14 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="176dp"
-        android:orientation="vertical" >
 
-    </LinearLayout>
-
-    <com.mapquest.android.maps.MapView
-        android:id="@+id/map"
-        android:layout_width="fill_parent"
-        android:layout_height="330dp"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:apiKey="@string/api_key"
-        android:clickable="true"
-        android:enabled="true" >
-    </com.mapquest.android.maps.MapView>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/showEventName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:text="@string/eventName"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -50,25 +22,67 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/showEventName"
         android:text="@string/room"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/subscribeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/showEventDate"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/showEventRoom"
+        android:text="@string/eventButton" />
+
+    <TextView
+        android:id="@+id/showEventDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:text="@string/eventDuration"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <com.mapquest.android.maps.MapView
+        android:id="@+id/map"
+        android:layout_width="fill_parent"
+        android:layout_height="330dp"
+        android:layout_above="@+id/showEventDuration"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/subscribeButton"
+        android:apiKey="@string/api_key"
+        android:clickable="true"
+        android:enabled="true" >
+
+    </com.mapquest.android.maps.MapView>
 
     <TextView
         android:id="@+id/showEventDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/map"
         android:layout_alignParentLeft="true"
-        android:text="Medium Text"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/showEventRoom"
+        android:text="@string/eventDate"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <Button
-        android:id="@+id/test"
+    <TextView
+        android:id="@+id/subscribeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/showEventName"
+        android:layout_alignLeft="@+id/subscribeButton"
+        android:layout_alignStart="@+id/subscribeButton"
         android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:text="Button" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

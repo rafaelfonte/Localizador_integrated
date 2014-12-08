@@ -40,8 +40,33 @@ public class User {
 		{
 			if(e.date.after(startDate)&&e.date.before(endDate))
 			{
-				Room.getRoom(e.roomId).draw(map);
+				e.setSpecialRoom(map);
 			}
+		}
+	}
+	public void showNextEventRoom(Date now,MapView map)
+	{
+		if(events.size()>0)
+		{
+			Event chosenEvent = null;
+			Event e;
+			for(int i =0; i<events.size();i++)
+			{
+				e=events.get(i);
+				if(e.date.after(now))
+				{
+					if(chosenEvent==null)
+					{
+						chosenEvent = e;
+					}
+					else
+					{
+						if(chosenEvent.date.after(e.date))
+						chosenEvent = e;
+					}
+				}
+			}
+			chosenEvent.setSpecialRoom(map);
 		}
 	}
 	

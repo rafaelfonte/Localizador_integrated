@@ -30,25 +30,28 @@ public final class R {
         public static final int ic_launcher2=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f090012;
-        public static final int befriend=0x7f09000d;
+        public static final int action_settings=0x7f090015;
+        public static final int befriend=0x7f09000f;
         public static final int button1=0x7f090000;
-        public static final int button2=0x7f090011;
-        public static final int button3=0x7f09000f;
+        public static final int button2=0x7f090014;
+        public static final int button3=0x7f090012;
         public static final int container=0x7f090005;
-        public static final int editText1=0x7f090001;
-        public static final int editText2=0x7f090002;
         public static final int listView1=0x7f090006;
-        public static final int map=0x7f090007;
+        public static final int map=0x7f09000c;
+        public static final int password_field=0x7f090002;
+        public static final int profileImageText=0x7f090011;
         public static final int showEventDate=0x7f09000a;
-        public static final int showEventName=0x7f090008;
-        public static final int showEventRoom=0x7f090009;
-        public static final int showUserName=0x7f09000c;
-        public static final int showUserShowGroups=0x7f09000e;
-        public static final int spinner1=0x7f090010;
-        public static final int test=0x7f09000b;
+        public static final int showEventDuration=0x7f09000b;
+        public static final int showEventName=0x7f090007;
+        public static final int showEventRoom=0x7f090008;
+        public static final int showUserName=0x7f09000e;
+        public static final int showUserShowGroups=0x7f090010;
+        public static final int spinner1=0x7f090013;
+        public static final int subscribeButton=0x7f090009;
+        public static final int subscribeText=0x7f09000d;
         public static final int textView1=0x7f090003;
         public static final int textView2=0x7f090004;
+        public static final int username_field=0x7f090001;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -65,11 +68,16 @@ public final class R {
         public static final int api_key=0x7f05000a;
         public static final int app_name=0x7f050000;
         public static final int befriend=0x7f050006;
+        public static final int eventButton=0x7f05000d;
+        public static final int eventDate=0x7f05000f;
+        public static final int eventDuration=0x7f05000e;
         public static final int eventName=0x7f050009;
         public static final int hello_world=0x7f050001;
+        public static final int profileImageText=0x7f05000b;
         public static final int room=0x7f050005;
         public static final int rotate_button_name=0x7f050004;
         public static final int showGroups=0x7f050008;
+        public static final int subscribeText=0x7f05000c;
         public static final int update_button_name=0x7f050003;
         public static final int username=0x7f050007;
     }

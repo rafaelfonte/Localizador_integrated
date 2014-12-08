@@ -1,11 +1,11 @@
 package locator.localizadormq;
 
 import java.util.ArrayList;
-import java.lang.Math;
 import java.util.List;
 
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.widget.Toast;
 
 import com.mapquest.android.maps.GeoPoint;
 import com.mapquest.android.maps.MapView;
@@ -156,6 +156,25 @@ public class Room {
 		polygon = new PolygonOverlay(altPaint);
         polygon.setData(polyData);
         polygon.setKey("Polygon #"+id);
+		map.getOverlays().add(polygon);
+		map.invalidate();
+	}
+	public void drawSpecial(final String string,MapView map)
+	{
+		polygon = new PolygonOverlay(altPaint);
+        polygon.setData(polyData);
+        polygon.setKey("Polygon #"+id);
+        /*Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        final int hours = calendar.get(Calendar.HOUR_OF_DAY);
+        final int minutes = calendar.get(Calendar.MINUTE);
+        */
+        polygon.setTapListener(new PolygonOverlay.OverlayTapListener() {			
+			@Override
+			public void onTap(GeoPoint gp, MapView mapView) {
+				Toast.makeText(EnrichedMap.getContext(), string, Toast.LENGTH_SHORT).show();				
+			}
+		});
 		map.getOverlays().add(polygon);
 		map.invalidate();
 	}

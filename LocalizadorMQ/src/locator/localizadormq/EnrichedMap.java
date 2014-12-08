@@ -85,18 +85,21 @@ public class EnrichedMap extends BasicMap
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
             	//spinner.getSelectedItem().toString();
-            	Date startDate = new Date();
-            	Date endDate = new Date();
-            	Calendar cal1 = Calendar.getInstance();
-            	Date today = new Date();
-            	cal1.setTime(today);
-            	//Calendar cal2 = Calendar.getInstance();
-            	switch(pos)
+            	if(pos == 0)
             	{
-            		case 0:
-            			;
+            		User.mainUser.showNextEventRoom(new Date(),map);
             	}
-            	User.mainUser.selectiveShow(startDate, endDate, map);
+            	else
+            	{
+	            	Date startDate = getStartDate(pos);
+	            	//Toast.makeText(getApplicationContext(), "Start Date: "+startDate.toString(), Toast.LENGTH_SHORT).show();
+	            	Date endDate = getEndDate(pos);
+	            	//Toast.makeText(getApplicationContext(), "End Date: "+endDate.toString(), Toast.LENGTH_SHORT).show();
+	            	map.getOverlays().clear();
+	            	map.invalidate();
+	            	Room.drawRooms(map);
+	            	User.mainUser.selectiveShow(startDate, endDate, map);
+            	}
                 //User.mainUser.selectiveShow(,this.map)
             }
             public void onNothingSelected(AdapterView<?> parent) {
@@ -109,4 +112,67 @@ public class EnrichedMap extends BasicMap
 	    {
 	        return mContext;
 	    }
+	    public static Date getStartDate(int pos)
+	    {
+	    	Date startDate = new Date();
+	    	Calendar cal1 = Calendar.getInstance();
+        	cal1.setTime(new Date());
+        	switch(pos)
+        	{
+        		case 1:
+        			//Today
+                    break;
+        		case 2:
+        			//This Week
+        			cal1.set((Calendar.DAY_OF_WEEK), cal1.getActualMinimum(Calendar.DAY_OF_WEEK));
+        			break;
+        		case 4:
+        			//This Year
+        			cal1.set(Calendar.MONTH, cal1.getActualMinimum(Calendar.MONTH));
+        		case 3:
+        			//This Month
+        			cal1.set(Calendar.DAY_OF_MONTH, cal1.getActualMinimum(Calendar.DAY_OF_MONTH));
+        			break;
+        		
+        	}
+        	cal1.set(Calendar.HOUR_OF_DAY, 0);
+            cal1.set(Calendar.MINUTE, 0);
+            cal1.set(Calendar.SECOND, 0);
+            cal1.set(Calendar.MILLISECOND, 0);
+            startDate = cal1.getTime();
+	    	return startDate;
+	    }
+	    public static Date getEndDate(int pos)
+	    {
+	    	Date endDate = new Date();
+	    	Calendar cal1 = Calendar.getInstance();
+        	cal1.setTime(new Date());
+        	switch(pos)
+        	{
+        		case 1:
+        			//Today
+                    break;
+        		case 2:
+        			//This Week
+        			cal1.set((Calendar.DAY_OF_WEEK), cal1.getActualMaximum(Calendar.DAY_OF_WEEK));
+        			break;
+        		case 4:
+        			//This Year
+        			cal1.set(Calendar.MONTH, cal1.getActualMaximum(Calendar.MONTH));
+        		case 3:
+        			//This Month
+        			cal1.set(Calendar.DAY_OF_MONTH, cal1.getActualMaximum(Calendar.DAY_OF_MONTH));
+        			break;
+        		
+        	}
+        	cal1.set(Calendar.HOUR_OF_DAY, 23);
+            cal1.set(Calendar.MINUTE, 59);
+            cal1.set(Calendar.SECOND, 59);
+            cal1.set(Calendar.MILLISECOND, 999);
+    	
+            endDate = cal1.getTime();
+	    	return endDate;
+	    }
+	    
+	    
 }

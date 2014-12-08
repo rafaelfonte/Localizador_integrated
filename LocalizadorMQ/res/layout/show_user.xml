@@ -30,4 +30,21 @@
         android:layout_below="@+id/befriend"
         android:text="@string/showGroups" />
 
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/showUserShowGroups"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/showUserShowGroups"
+		android:layout_toEndOf="@+id/showUserShowGroups" >
+        <TextView
+            android:id="@+id/profileImageText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profileImageText" />
+
+    </FrameLayout>
+
 </RelativeLayout>
