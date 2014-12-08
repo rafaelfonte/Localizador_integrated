@@ -33,10 +33,7 @@ public class MainActivity extends Activity {
               //Toast.makeText(application_ctx = getApplicationContext(), "Logging in...", Toast.LENGTH_SHORT).show();
               String username = ((EditText)findViewById(R.id.username_field)).getText().toString();
               String password = ((EditText)findViewById(R.id.password_field)).getText().toString();
-              //Remove this before pushing
-              load(username,password);
-              startActivity(intent);
-              //End of removal part
+             
               String[] result_attempt = null;
               //Autenticacao
               try {
