@@ -123,14 +123,21 @@ public class MainActivity extends Activity {
             ClientThread events = new ClientThread(activity_ctx,Constants.ctGetAct,new String[]{username,password});
             events.execute();
             String [] resultQuery = events.get();
-            System.out.println("result query: " + resultQuery[0] + ";;;;" + resultQuery[1]);
+            //System.out.println("result query: " + resultQuery[0] + ";;;;" + resultQuery[1]);
+            String eventsSubscribed = resultQuery[2];
+            int [] subscriptions = Constants.cvrtSubscriptions(eventsSubscribed);
+            System.out.println("Events subscribed: " + eventsSubscribed);
             JSONArray jArr = new JSONArray(resultQuery[1]);
             JSONObject handler;
             for(int i = 0; i < jArr.length(); i++){
                 handler = jArr.getJSONObject(i);
-                Event ev = new Event(handler.getInt("ID"), handler.getInt("roomID"), handler.getString("idOwner"), handler.getString("name"),
-                        handler.getString("description"),handler.getInt("capacity"),handler.getInt("cap-taken"),handler.getString("timestamp"),handler.getString("duration"),handler.getString("private").equals("t") ? true : false);
-                User.mainUser.addEvent(ev);
+                Event ev = new Event(handler.getInt("ID") - 1, handler.getInt("roomID"), handler.getString("idOwner"), handler.getString("name"),
+                        handler.getString("description"),handler.getInt("capacity"),handler.getInt("cap-taken"),handler.getString("timestamp"),
+                        handler.getString("duration"),handler.getString("private").equals("t") ? true : false);
+                if(Constants.contains(handler.getInt("ID"),subscriptions)){
+                    System.out.println("Yes! Contains! " + handler.getInt("ID"));
+                    User.mainUser.addEvent(ev);
+                }
             }
         }
         catch(Exception e){
@@ -148,12 +155,13 @@ public class MainActivity extends Activity {
             JSONObject handler;
             for(int i = 0; i < jArr.length(); i++){
                 handler = jArr.getJSONObject(i);
-                new Room(handler.getString("name"),handler.getString("description"),0,handler.getInt("side"),handler.getInt("pos"),handler.getInt("max_cap"),handler.getInt("ID"));
+                new Room(handler.getString("name"),handler.getString("description"),0,handler.getInt("side"),handler.getInt("pos"),handler.getInt("max_cap"),handler.getInt("ID") - 1);
             }
         }
         catch(Exception e){
             Log.e("MainActivity", "An exception occurred room fetch: ", e);
         }
     }
+
   
 }

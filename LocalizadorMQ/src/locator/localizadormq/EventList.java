@@ -4,36 +4,36 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.*;
+
+import java.util.*;
 
 public class EventList extends ListActivity{
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        //setContentView(R.layout.my_groups);
-       /* String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
-                "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-                "Linux", "OS/2" };
-                */
-        String[] values = new String[Event.allEvents.size()];
+
+        String [] label = new String[]{"MAIN","SECONDARY"};
+        int [] layoutID = new int[]{android.R.id.text1,android.R.id.text2};
+
+        List<Map<String,String>> listOfValues = new ArrayList<Map<String, String>>(Event.allEvents.size());
+        for (final Event ev: Event.allEvents) {
+            final Map<String, String> listItemMap = new HashMap<String, String>();
+            listItemMap.put(label[0], ev.name);
+            listItemMap.put(label[1], ev.description + (User.mainUser.checkSubscription(ev) ? " (SUBSCRIBED)" : " (NOT SUBSCRIBED)"));
+            listOfValues.add(Collections.unmodifiableMap(listItemMap));
+        }
+        ListAdapter adapter = new SimpleAdapter(this,listOfValues,android.R.layout.simple_expandable_list_item_2,label,layoutID);
+        /*String[] values = new String[Event.allEvents.size()];
         for(int i=0;i<Event.allEvents.size();i++)
         {
         	values[i] = Event.getEvent(i).name;
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,values);
-                
-        /*String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
-                "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-                "Linux", "OS/2" };
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,values);
-                */
-            setListAdapter(adapter);
+*/
+        setListAdapter(adapter);
     }
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {

@@ -34,4 +34,25 @@ public class Constants {
     public static final int ctGetRoomsAct     =  7;
     public static final int ctGetUsersAct     =  8;
 
+    public static boolean contains(int val, int[] v){
+        for(int i = 0; i < v.length; i++){
+            if(v[i] == val)
+                return true;
+        }
+        return false;
+    }
+
+    public static int [] cvrtSubscriptions(String subs){
+        String[] items = subs.replaceAll("\\{", "").replaceAll("\\}", "").split(",");
+
+        int[] results = new int[items.length];
+
+        for (int i = 0; i < items.length; i++) {
+            try {
+                results[i] = Integer.parseInt(items[i]);
+            } catch (NumberFormatException nfe) {};
+        }
+        return results;
+    }
+
 }

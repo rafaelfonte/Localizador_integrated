@@ -47,7 +47,7 @@ public class ShowEvent extends BasicMap{
 		String str = timeFormat.format(showedEvent.date);
 		String durationStr = durationFormat.format(showedEvent.duration);
 		dateText.setText(str);
-		durationText.setText(durationStr);
+		durationText.setText("Total duration: " + durationStr);
 		
     	boolean subscribed = User.mainUser.checkSubscription(showedEvent);
     	subscribeButton = (Button) findViewById(R.id.subscribeButton);
@@ -69,6 +69,7 @@ public class ShowEvent extends BasicMap{
             public void onClick(View v) {
           	  Toast.makeText(getApplicationContext(), "Subscribing...", Toast.LENGTH_SHORT).show();
           	  User.mainUser.unsubscribe(showedEvent);
+              System.out.println("The result for unsubscription is " + User.mainUser.checkSubscription(showedEvent));
           	  setUnsubscribeButton();
             }
         });
@@ -82,6 +83,7 @@ public class ShowEvent extends BasicMap{
             public void onClick(View v) {
           	  Toast.makeText(getApplicationContext(), "Unsubscribing...", Toast.LENGTH_SHORT).show();
           	  User.mainUser.addEvent(showedEvent);
+                System.out.println("The result for subscription is " + User.mainUser.checkSubscription(showedEvent));
           	  setSubscribeButton();
             }
         });

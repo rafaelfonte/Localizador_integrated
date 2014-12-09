@@ -252,16 +252,18 @@ private : ""
         //Now we wait for a response from the server...
         JSONObject response = new JSONObject(recvMsgFromServer());
         String responseType = response.get("response").toString();
+        String subsList = "";
 
         if(responseType.equals(Constants.ctOkMsg)){
             System.out.println("Received " + Constants.ctOkMsg + ", messages fetched.");
             System.out.println("List of events: \n" + response.get("list_events").toString());
+            subsList = response.getString("subs_list");
         }
         else{
             System.out.println("Error: error returned - {(" + responseType + "),(" + response.get("message") + ")}...");
             return new String[]{Constants.ctErrorMsg,response.get("message").toString()};
         }
-        return new String[]{Constants.ctOkMsg,response.get("list_events").toString()};
+        return new String[]{Constants.ctOkMsg,response.get("list_events").toString(),subsList};
     }
     public String[] subscribeEvent(String username, String eventID) throws Exception{
             /*
