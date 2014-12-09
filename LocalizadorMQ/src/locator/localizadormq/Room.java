@@ -63,6 +63,7 @@ public class Room {
 	
 	int id;
 	String name;
+    String description;
 	int capacity;
 	PolygonOverlay polygon;
 	List<GeoPoint> polyData;
@@ -105,6 +106,35 @@ public class Room {
 		*/
 		allRooms.add(this);
 	}
+    public Room(String nome, String description, int predio, int lado, int altura,int cap, int id){
+        this.id = id;
+        this.description = description;
+        name = nome;
+        capacity = cap;
+        baseLat = predio1Lat + salaTopStepLat*lado + salaSideStepLat*altura;
+        baseLng = predio1Lng + salaTopStepLng*lado + salaSideStepLng*altura;
+        topStepLat = -salaTopSize*Math.cos(alpha);
+        topStepLng = +salaTopSize*Math.sin(alpha);
+        sideStepLat = -salaSideSize*Math.sin(beta);
+        sideStepLng = -salaSideSize*Math.cos(beta);
+
+        polyData = new ArrayList<GeoPoint>();
+        polyData.add(new GeoPoint(baseLat,baseLng));
+        polyData.add(new GeoPoint(baseLat+topStepLat,baseLng+topStepLng));
+        polyData.add(new GeoPoint(baseLat+topStepLat+sideStepLat,baseLng+topStepLng+sideStepLng));
+        polyData.add(new GeoPoint(baseLat+sideStepLat,baseLng+sideStepLng));
+
+            /*
+            polygon.setTapListener(new PolygonOverlay.OverlayTapListener() {
+                @Override
+                public void onTap(GeoPoint gp, MapView mapView) {
+                    Toast.makeText(EnrichedMap.getContext(), "Sala"+name+id, Toast.LENGTH_SHORT).show();
+                }
+            });
+        */
+        allRooms.add(this);
+    }
+
 	public Room(String nome,int predio, int lado, int altura,int cap)
 	{
 		id = counter;

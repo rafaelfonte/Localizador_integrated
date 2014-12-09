@@ -5,7 +5,7 @@ package locator.servcomm;
  */
 public class Constants {
     public static final int SRV_PORT = 1234;
-    public static final String SRV_IP = "143.54.12.184";
+    public static final String SRV_IP = "192.168.43.232";
 
 
     public static final String ctSignUpMsg = "SIGNUP";
@@ -19,6 +19,9 @@ public class Constants {
     public static final String ctSubsEventMsg = "SUBSCRIBE_EVENT";
     public static final String ctUnsubsEventMsg = "UNSUBSCRIBE_EVENT";
     public static final String ctUpdateEventMsg = "UPDATE_EVENT";
+    public static final String ctGetRoomsMsg = "GET_ROOMS";
+    public static final String ctGetUsersMsg = "GET_USERS";
+
 
 
     public static final int ctSignUpAct      =  0;
@@ -28,5 +31,7 @@ public class Constants {
     public static final int ctSubsEventAct   =  4;
     public static final int ctUnsubsEventAct =  5;
     public static final int ctUpdateEventAct =  6;
+    public static final int ctGetRoomsAct     =  7;
+    public static final int ctGetUsersAct     =  8;
 
 }

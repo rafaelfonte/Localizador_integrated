@@ -57,5 +57,12 @@
         android:layout_above="@+id/password_field"
         android:layout_alignRight="@+id/textView1"
         android:text="Password" />
+    <CheckedTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New user? Sign Up!"
+            android:id="@+id/fieldSignUp"
+            android:layout_marginBottom="63dp" android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true" android:checked="false" android:textColor="#5665ff"/>
 
 </RelativeLayout>

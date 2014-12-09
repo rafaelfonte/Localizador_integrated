@@ -54,6 +54,11 @@ public class ClientThread extends AsyncTask<String,Void,String[]> {
             case Constants.ctMakeEventAct:
                 this.dialog.setMessage("Making event...");
                 break;
+            case Constants.ctUpdateEventAct:
+                this.dialog.setMessage("Updating event...");
+                break;
+            case Constants.ctGetRoomsAct:
+                this.dialog.setMessage("Fetching room info...");
             default:
 
         }
@@ -102,6 +107,24 @@ public class ClientThread extends AsyncTask<String,Void,String[]> {
                     resultStr = authenticate(act_args[0],act_args[1]);
                     if(resultStr[0].equals(Constants.ctHelloMsg))
                         resultStr = makeEvent(act_args[2],act_args[3],act_args[4],act_args[5],act_args[6],act_args[7],act_args[8]);
+                    break;
+                case Constants.ctUpdateEventAct:
+                    System.out.println("Updating event...");
+                    resultStr = authenticate(act_args[0],act_args[1]);
+                    if(resultStr[0].equals(Constants.ctHelloMsg))
+                        resultStr = updateEvent(act_args[2],act_args[3],act_args[4],act_args[5],act_args[6],act_args[7],act_args[8],act_args[9]);
+                    break;
+                case Constants.ctGetRoomsAct:
+                    System.out.println("Fetching rooms...");
+                    resultStr = authenticate(act_args[0],act_args[1]);
+                    if(resultStr[0].equals(Constants.ctHelloMsg))
+                        resultStr = getRooms(act_args[0]);
+                    break;
+                case Constants.ctGetUsersAct:
+                    System.out.println("Fetching users...");
+                    resultStr = authenticate(act_args[0],act_args[1]);
+                    if(resultStr[0].equals(Constants.ctHelloMsg))
+                        resultStr = getUsers(act_args[0]);
                     break;
                 default:
 
@@ -428,6 +451,95 @@ message : "Sdadiasdia"
             return new String[]{Constants.ctErrorMsg,response.get("message").toString()};
         }
         return new String[]{Constants.ctOkMsg,response.get("message").toString()};
+    }
+    public String[] getRooms(String username) throws Exception{
+            /*
+            Request schema
+            {
+                type : "GET_ROOMS"
+                username : "John Doe"
+            }
+            Response schema
+            {
+                response : "OK"
+vector with
+
+roomID : "1/2/3...",
+name : "INF Sistemas Embarcados",
+description : "",
+capacity : "1024",
+side : "0/1",
+pos : "0-6"
+}
+            }
+            */
+        //Forming the message...
+        JSONObject query = new JSONObject();
+        query.put("type",Constants.ctGetRoomsMsg);
+        query.put("username", username);
+
+        //Sending it away...
+        sendMsgToServer(query.toString());
+        System.out.println("Sent GET JSON, awaiting response.");
+
+        //Now we wait for a response from the server...
+        JSONObject response = new JSONObject(recvMsgFromServer());
+        String responseType = response.get("response").toString();
+
+        if(responseType.equals(Constants.ctOkMsg)){
+            System.out.println("Received " + Constants.ctOkMsg + ", messages fetched.");
+            System.out.println("List of rooms: \n" + response.get("list_rooms").toString());
+        }
+        else{
+            System.out.println("Error: error returned - {(" + responseType + "),(" + response.get("message") + ")}...");
+            return new String[]{Constants.ctErrorMsg,response.get("message").toString()};
+        }
+        return new String[]{Constants.ctOkMsg,response.get("list_rooms").toString()};
+    }
+
+    public String[] getUsers(String username) throws Exception{
+            /*
+            Request schema
+            {
+                type : "GET_ROOMS"
+                username : "John Doe"
+            }
+            Response schema
+            {
+                response : "OK"
+vector with
+
+roomID : "1/2/3...",
+name : "INF Sistemas Embarcados",
+description : "",
+capacity : "1024",
+side : "0/1",
+pos : "0-6"
+}
+            }
+            */
+        //Forming the message...
+        JSONObject query = new JSONObject();
+        query.put("type",Constants.ctGetUsersMsg);
+        query.put("username", username);
+
+        //Sending it away...
+        sendMsgToServer(query.toString());
+        System.out.println("Sent GET JSON, awaiting response.");
+
+        //Now we wait for a response from the server...
+        JSONObject response = new JSONObject(recvMsgFromServer());
+        String responseType = response.get("response").toString();
+
+        if(responseType.equals(Constants.ctOkMsg)){
+            System.out.println("Received " + Constants.ctOkMsg + ", messages fetched.");
+            System.out.println("List of users: \n" + response.get("list_users").toString());
+        }
+        else{
+            System.out.println("Error: error returned - {(" + responseType + "),(" + response.get("message") + ")}...");
+            return new String[]{Constants.ctErrorMsg,response.get("message").toString()};
+        }
+        return new String[]{Constants.ctOkMsg,response.get("list_users").toString()};
     }
         /*
         public boolean alterEvent(String user, String password) throws Exception{
