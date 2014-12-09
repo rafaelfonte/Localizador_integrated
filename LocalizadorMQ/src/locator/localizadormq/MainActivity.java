@@ -55,7 +55,7 @@ public class MainActivity extends Activity {
               if (result_attempt != null){
                   if(result_attempt[0].equals(Constants.ctHelloMsg)) {
                       //Toast.makeText(getApplicationContext(), result_attempt[1], Toast.LENGTH_SHORT).show();
-                      load(username,password);
+                      load();
                       startActivity(intent);
                   }
                   else{
@@ -87,7 +87,7 @@ public class MainActivity extends Activity {
                 if (result_attempt != null){
                     if(result_attempt[0].equals(Constants.ctOkMsg)) {
                         //Toast.makeText(getApplicationContext(), result_attempt[1], Toast.LENGTH_SHORT).show();
-                        load(username,password);
+                        load();
                         startActivity(intent);
                     }
                     else{
@@ -98,17 +98,17 @@ public class MainActivity extends Activity {
         });
     }
 	
-	private void load(String user, String pass)
+	private void load()
 	{
-          loadRooms();
+          User.loadRooms(activity_ctx,username,password);
 	      /*Room roomArray[] = new Room[14] ;
 	      for(int i=0;i<7;i++)
 	      {
 		      	roomArray[i*2] = new Room("SalaEsperta",0,0,i,30);
 		      	roomArray[i*2+1] = new Room("SalaEsperta",0,1,i,30);
 	      }*/
-	      User.mainUser = new User(user,pass);
-          loadEvents();
+	      User.mainUser = new User(username,password);
+          User.loadEvents(activity_ctx,username,password);
 	      //Event specialEvent = new Event(3,"2014-12-25 14:00:00");
 	      /*Event eventArray[] = new Event[12] ;
 	      for(int i=0;i<12;i++)
@@ -118,50 +118,7 @@ public class MainActivity extends Activity {
 	      }*/
 	      
 	}
-    private void loadEvents(){
-        try{
-            ClientThread events = new ClientThread(activity_ctx,Constants.ctGetAct,new String[]{username,password});
-            events.execute();
-            String [] resultQuery = events.get();
-            //System.out.println("result query: " + resultQuery[0] + ";;;;" + resultQuery[1]);
-            String eventsSubscribed = resultQuery[2];
-            int [] subscriptions = Constants.cvrtSubscriptions(eventsSubscribed);
-            System.out.println("Events subscribed: " + eventsSubscribed);
-            JSONArray jArr = new JSONArray(resultQuery[1]);
-            JSONObject handler;
-            for(int i = 0; i < jArr.length(); i++){
-                handler = jArr.getJSONObject(i);
-                Event ev = new Event(handler.getInt("ID") - 1, handler.getInt("roomID"), handler.getString("idOwner"), handler.getString("name"),
-                        handler.getString("description"),handler.getInt("capacity"),handler.getInt("cap-taken"),handler.getString("timestamp"),
-                        handler.getString("duration"),handler.getString("private").equals("t") ? true : false);
-                if(Constants.contains(handler.getInt("ID"),subscriptions)){
-                    System.out.println("Yes! Contains! " + handler.getInt("ID"));
-                    User.mainUser.addEvent(ev);
-                }
-            }
-        }
-        catch(Exception e){
-            Log.e("MainActivity", "An exception occurred room fetch: ", e);
-        }
-    }
 
-    private void loadRooms(){
-        try{
-            ClientThread rooms = new ClientThread(activity_ctx,Constants.ctGetRoomsAct,new String[]{username,password});
-            rooms.execute();
-            String [] resultQuery = rooms.get();
-            System.out.println("result query: " + resultQuery[0] + ";;;;" + resultQuery[1]);
-            JSONArray jArr = new JSONArray(resultQuery[1]);
-            JSONObject handler;
-            for(int i = 0; i < jArr.length(); i++){
-                handler = jArr.getJSONObject(i);
-                new Room(handler.getString("name"),handler.getString("description"),0,handler.getInt("side"),handler.getInt("pos"),handler.getInt("max_cap"),handler.getInt("ID") - 1);
-            }
-        }
-        catch(Exception e){
-            Log.e("MainActivity", "An exception occurred room fetch: ", e);
-        }
-    }
 
   
 }

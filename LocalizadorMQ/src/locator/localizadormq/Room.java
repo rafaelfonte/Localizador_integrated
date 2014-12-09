@@ -167,7 +167,7 @@ public class Room {
 	
 	public static Room getRoom(int id)
 	{
-		return allRooms.get(id);
+		return allRooms.get(id-1);
 	}
 	public static void drawRooms(MapView map)
 	{

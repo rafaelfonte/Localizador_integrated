@@ -5,7 +5,8 @@ package locator.servcomm;
  */
 public class Constants {
     public static final int SRV_PORT = 1234;
-    public static final String SRV_IP = "192.168.43.232";
+    //public static final String SRV_IP = "192.168.43.232";
+    public static final String SRV_IP = "143.54.12.184";
 
 
     public static final String ctSignUpMsg = "SIGNUP";

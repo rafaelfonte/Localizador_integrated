@@ -8,10 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.*;
 
 import com.mapquest.android.maps.GeoPoint;
 import locator.servcomm.ClientThread;
@@ -24,7 +21,36 @@ public class EnrichedMap extends BasicMap
 
 	private float rotation = 0f;
 	private static Context mContext;
-	   
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        int pos = ((Spinner)findViewById(R.id.spinner1)).getSelectedItemPosition();
+        if(resultCode==1){
+            //spinner.getSelectedItem().toString();
+            if(pos == 0)
+            {
+                map.getOverlays().clear();
+                map.invalidate();
+                Room.drawRooms(map);
+                User.mainUser.showNextEventRoom(new Date(),map,(CheckedTextView)findViewById(R.id.info_next));
+            }
+            else
+            {
+                Date startDate = getStartDate(pos);
+                //Toast.makeText(getApplicationContext(), "Start Date: "+startDate.toString(), Toast.LENGTH_SHORT).show();
+                Date endDate = getEndDate(pos);
+                //Toast.makeText(getApplicationContext(), "End Date: "+endDate.toString(), Toast.LENGTH_SHORT).show();
+                map.getOverlays().clear();
+                map.invalidate();
+                Room.drawRooms(map);
+                User.mainUser.selectiveShow(startDate, endDate, map);
+                CheckedTextView tx = (CheckedTextView)findViewById(R.id.info_next);
+                tx.setText("");
+            }
+        }
+    }
+
     @Override
     protected void init() 
     {
@@ -62,65 +88,13 @@ public class EnrichedMap extends BasicMap
         		{
         				public void onClick(View v) 
         				{
-        					Toast.makeText(getApplicationContext(), "Going to List Events", Toast.LENGTH_SHORT).show();
-        					startActivity(intent);
+        					//Toast.makeText(getApplicationContext(), "Going to List Events", Toast.LENGTH_SHORT).show();
+        					startActivityForResult(intent, 1);
+
         				}
         		}
         );
-        final Button button3 = (Button) findViewById(R.id.button3);
-        button3.setOnClickListener(
-                new View.OnClickListener()
-                {
-                    public void onClick(View v)
-                    {
-                        //SETS
-                        String username = User.mainUser.username,password = User.mainUser.password;
-                        //Update rooms
-                        try{
-                            ClientThread rooms = new ClientThread(mContext,Constants.ctGetRoomsAct,new String[]{username,password});
-                            rooms.execute();
-                            String [] resultQuery = rooms.get();
-                            JSONArray jArr = new JSONArray(resultQuery[1]);
-                            JSONObject handler;
-                            for(int i = 0; i < jArr.length(); i++){
-                                handler = jArr.getJSONObject(i);
-                                new Room(handler.getString("name"),handler.getString("description"),0,handler.getInt("side"),handler.getInt("pos"),handler.getInt("max_cap"),handler.getInt("ID") - 1);
-                            }
-                        }
-                        catch(Exception e){
-                            Log.e("MainActivity", "An exception occurred room fetch: ", e);
-                        }
-                        User.mainUser = new User(username,password);
-                        //Update
-                        try{
-                            ClientThread events = new ClientThread(mContext, Constants.ctGetAct,new String[]{User.mainUser.username,User.mainUser.password});
-                            events.execute();
-                            String [] resultQuery = events.get();
-                            //System.out.println("result query: " + resultQuery[0] + ";;;;" + resultQuery[1]);
-                            String eventsSubscribed = resultQuery[2];
-                            int [] subscriptions = Constants.cvrtSubscriptions(eventsSubscribed);
-                            System.out.println("Events subscribed: " + eventsSubscribed);
-                            JSONArray jArr = new JSONArray(resultQuery[1]);
-                            JSONObject handler;
-                            for(int i = 0; i < jArr.length(); i++){
-                                handler = jArr.getJSONObject(i);
-                                Event ev = new Event(handler.getInt("ID") - 1, handler.getInt("roomID"), handler.getString("idOwner"), handler.getString("name"),
-                                        handler.getString("description"),handler.getInt("capacity"),handler.getInt("cap-taken"),handler.getString("timestamp"),
-                                        handler.getString("duration"),handler.getString("private").equals("t") ? true : false);
-                                if(Constants.contains(handler.getInt("ID"), subscriptions)){
-                                    System.out.println("Yes! Contains! " + handler.getInt("ID"));
-                                    User.mainUser.addEvent(ev);
-                                }
-                            }
-                        }
-                        catch(Exception e){
-                            Log.e("MainActivity", "An exception occurred room fetch: ", e);
-                        }
 
-
-                    }
-                }
-        );
       
         mContext = getApplicationContext();
         Room.init();
@@ -131,7 +105,7 @@ public class EnrichedMap extends BasicMap
         */
         
         
-        Toast.makeText(getApplicationContext(), "Rooms: "+Room.allRooms.size(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), "Rooms: "+Room.allRooms.size(), Toast.LENGTH_SHORT).show();
         Room.drawRooms(this.map);
        /* Event eventArray[] = new Event[12];
         for(int i=0;i<12;i++)
@@ -146,7 +120,10 @@ public class EnrichedMap extends BasicMap
             	//spinner.getSelectedItem().toString();
             	if(pos == 0)
             	{
-            		User.mainUser.showNextEventRoom(new Date(),map);
+                    map.getOverlays().clear();
+                    map.invalidate();
+                    Room.drawRooms(map);
+            		User.mainUser.showNextEventRoom(new Date(),map,(CheckedTextView)findViewById(R.id.info_next));
             	}
             	else
             	{
@@ -158,12 +135,44 @@ public class EnrichedMap extends BasicMap
 	            	map.invalidate();
 	            	Room.drawRooms(map);
 	            	User.mainUser.selectiveShow(startDate, endDate, map);
+                    CheckedTextView tx = (CheckedTextView)findViewById(R.id.info_next);
+                    tx.setText("");
             	}
                 //User.mainUser.selectiveShow(,this.map)
             }
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+        final Button button3 = (Button) findViewById(R.id.button3);
+        button3.setOnClickListener(
+                new View.OnClickListener()
+                {
+                    public void onClick(View v)
+                    {
+                        int pos = spinner.getSelectedItemPosition();
+                        if(pos == 0)
+                        {
+                            map.getOverlays().clear();
+                            map.invalidate();
+                            Room.drawRooms(map);
+                            User.mainUser.showNextEventRoom(new Date(),map,(CheckedTextView)findViewById(R.id.info_next));
+                        }
+                        else
+                        {
+                            Date startDate = getStartDate(pos);
+                            //Toast.makeText(getApplicationContext(), "Start Date: "+startDate.toString(), Toast.LENGTH_SHORT).show();
+                            Date endDate = getEndDate(pos);
+                            //Toast.makeText(getApplicationContext(), "End Date: "+endDate.toString(), Toast.LENGTH_SHORT).show();
+                            map.getOverlays().clear();
+                            map.invalidate();
+                            Room.drawRooms(map);
+                            User.mainUser.selectiveShow(startDate, endDate, map);
+                            CheckedTextView tx = (CheckedTextView)findViewById(R.id.info_next);
+                            tx.setText("");
+                        }
+                    }
+                }
+        );
         
     }
 

@@ -10,7 +10,9 @@
   </component>
   <component name="AndroidLayoutPreviewToolWindow">
     <option name="state">
-      <GlobalState />
+      <GlobalState>
+        <option name="visible" value="false" />
+      </GlobalState>
     </option>
   </component>
   <component name="AndroidLayouts">
@@ -27,6 +29,12 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/res/layout/show_event.xml">
+        <config>
+          <device>Nexus 4</device>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/res/layout/simple_map.xml">
         <config>
           <device>Nexus 4</device>
           <theme>@style/AppTheme</theme>
@@ -104,60 +112,84 @@
       <file leaf-file-name="User.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="27" selection-start="1530" selection-end="1530" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1564">
+            <state line="83" column="90" selection-start="1954" selection-end="1954" vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="3230">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EnrichedMap.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="EnrichedMap.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/EnrichedMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="0" selection-start="3672" selection-end="3672" vertical-scroll-proportion="0.0" vertical-offset="1181" max-vertical-offset="3740">
-              <folding>
-                <element signature="e#1758#2019#0" expanded="true" />
-                <element signature="e#2006#2007#0" expanded="true" />
-                <element signature="e#2151#5408#0" expanded="true" />
-                <element signature="e#5389#5390#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="110" column="23" selection-start="4889" selection-end="4889" vertical-scroll-proportion="-15.038462" vertical-offset="1173" max-vertical-offset="2635">
+            <state line="28" column="26" selection-start="778" selection-end="778" vertical-scroll-proportion="0.408" vertical-offset="0" max-vertical-offset="3808">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShowEvent.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/ShowEvent.java">
+      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="23" selection-start="528" selection-end="532" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1462">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="765">
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="simple_map.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/simple_map.xml">
+          <provider editor-type-id="text-editor">
+            <state line="47" column="33" selection-start="1694" selection-end="1694" vertical-scroll-proportion="-18.56" vertical-offset="335" max-vertical-offset="1071">
+              <folding />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="EventList.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/EventList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="114" selection-start="893" selection-end="893" vertical-scroll-proportion="0.0" vertical-offset="33" max-vertical-offset="918">
+            <state line="49" column="30" selection-start="1942" selection-end="1942" vertical-scroll-proportion="0.0" vertical-offset="140" max-vertical-offset="901">
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#711#727#0" expanded="true" />
+                <element signature="e#553#574#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Constants.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/locator/servcomm/Constants.java">
+      <file leaf-file-name="styles.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/values/styles.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="50" selection-start="1152" selection-end="1152" vertical-scroll-proportion="0.39716312" vertical-offset="381" max-vertical-offset="1088">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="442">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GroupList.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/GroupList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="13" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Group.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/Group.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="13" selection-start="74" selection-end="74" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Event.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/Event.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="18" selection-start="296" selection-end="303" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1751">
               <folding />
             </state>
           </provider>
@@ -179,21 +211,24 @@
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/locator/servcomm/MainActivity.java" />
         <option value="$PROJECT_DIR$/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/src/locator/localizadormq/Room.java" />
         <option value="$PROJECT_DIR$/src/locator/localizadormq/Event.java" />
+        <option value="$PROJECT_DIR$/src/locator/servcomm/Constants.java" />
         <option value="$PROJECT_DIR$/src/locator/servcomm/ClientThread.java" />
+        <option value="$PROJECT_DIR$/src/locator/localizadormq/MainActivity.java" />
+        <option value="$PROJECT_DIR$/src/locator/localizadormq/Room.java" />
+        <option value="$PROJECT_DIR$/res/layout/simple_map.xml" />
         <option value="$PROJECT_DIR$/src/locator/localizadormq/ShowEvent.java" />
         <option value="$PROJECT_DIR$/src/locator/localizadormq/User.java" />
         <option value="$PROJECT_DIR$/src/locator/localizadormq/EventList.java" />
-        <option value="$PROJECT_DIR$/src/locator/servcomm/Constants.java" />
-        <option value="$PROJECT_DIR$/src/locator/localizadormq/MainActivity.java" />
         <option value="$PROJECT_DIR$/src/locator/localizadormq/EnrichedMap.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1925" />
-    <option name="height" value="1040" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -221,8 +256,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -317,12 +350,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LocalizadorMQ" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LocalizadorMQ" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="layout" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -384,6 +437,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -409,19 +475,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -539,34 +592,34 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1925" height="1040" extended-state="0" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49866095" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32821077" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49840087" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3279396" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32711306" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.66191" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32686085" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29773462" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13069095" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32821077" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14270501" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3279396" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -591,50 +644,14 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/EnrichedMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="74" selection-start="4373" selection-end="4389" vertical-scroll-proportion="0.0" vertical-offset="2142" max-vertical-offset="3128">
-          <folding>
-            <element signature="e#1758#2019#0" expanded="true" />
-            <element signature="e#2006#2007#0" expanded="true" />
-            <element signature="e#2151#5408#0" expanded="true" />
-            <element signature="e#5389#5390#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="23" selection-start="531" selection-end="531" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="2805">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="19" selection-start="304" selection-end="304" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1836">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/EventList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="918">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#711#727#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/show_event.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1581">
           <folding />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/locator/servcomm/ClientThread.java">
@@ -661,12 +678,7 @@
     <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/EnrichedMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="126" column="74" selection-start="4373" selection-end="4389" vertical-scroll-proportion="0.0" vertical-offset="2142" max-vertical-offset="3128">
-          <folding>
-            <element signature="e#1758#2019#0" expanded="true" />
-            <element signature="e#2006#2007#0" expanded="true" />
-            <element signature="e#2151#5408#0" expanded="true" />
-            <element signature="e#5389#5390#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -688,20 +700,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="13" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="918">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#711#727#0" expanded="true" />
+            <element signature="e#553#574#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/show_event.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1581">
           <folding />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/locator/servcomm/ClientThread.java">
@@ -761,13 +772,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1139">
           <folding />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/locator/servcomm/Constants.java">
@@ -819,13 +830,6 @@
         <state line="185" column="0" selection-start="7859" selection-end="7859" vertical-scroll-proportion="1.2245322" vertical-offset="2539" max-vertical-offset="3230" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/Room.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="191" column="42" selection-start="6581" selection-end="6581" vertical-scroll-proportion="0.0" vertical-offset="3185" max-vertical-offset="3757">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/ShowUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="13" selection-start="186" selection-end="186" vertical-scroll-proportion="0.11888112" vertical-offset="0" max-vertical-offset="572">
@@ -834,78 +838,63 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/my_groups.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
     </entry>
     <entry file="jar://$USER_HOME$/Downloads/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/platforms/android-18/android.jar!/android/widget/AdapterView.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="0" selection-start="2282" selection-end="2282" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="2193">
-          <folding />
-        </state>
+        <state line="48" column="0" selection-start="2282" selection-end="2282" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="2193" />
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/Downloads/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/platforms/android-18/android.jar!/java/lang/reflect/Method.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="0" selection-start="2320" selection-end="2320" vertical-scroll-proportion="1.0429688" vertical-offset="367" max-vertical-offset="1003">
-          <folding />
-        </state>
+        <state line="54" column="0" selection-start="2320" selection-end="2320" vertical-scroll-proportion="1.0429688" vertical-offset="367" max-vertical-offset="1003" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state line="7" column="0" selection-start="388" selection-end="388" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1258">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/show_event.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/show_event.xml">
       <provider editor-type-id="text-editor">
         <state line="48" column="36" selection-start="1853" selection-end="1866" vertical-scroll-proportion="0.0" vertical-offset="440" max-vertical-offset="1581">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/show_user.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/show_user.xml">
       <provider editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="952">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="54" selection-start="2660" selection-end="2660" vertical-scroll-proportion="0.47733712" vertical-offset="1023" max-vertical-offset="1751">
-          <folding />
-        </state>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/Downloads/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/platforms/android-18/android.jar!/android/widget/TextView.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="196" selection-end="196" vertical-scroll-proportion="0.11724138" vertical-offset="51" max-vertical-offset="8976">
-          <folding />
-        </state>
+        <state line="7" column="13" selection-start="196" selection-end="196" vertical-scroll-proportion="0.11724138" vertical-offset="51" max-vertical-offset="8976" />
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/Downloads/adt-bundle-windows-x86_64-20130219/adt-bundle-windows-x86_64-20130219/sdk/platforms/android-18/android.jar!/java/util/ArrayList.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="19" selection-start="1169" selection-end="1169" vertical-scroll-proportion="0.3325893" vertical-offset="395" max-vertical-offset="1071">
-          <folding />
-        </state>
+        <state line="33" column="19" selection-start="1169" selection-end="1169" vertical-scroll-proportion="0.3325893" vertical-offset="395" max-vertical-offset="1071" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/BasicMap.java">
@@ -915,69 +904,105 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/EventList.java">
+    <entry file="file://$PROJECT_DIR$/src/locator/servcomm/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="114" selection-start="893" selection-end="893" vertical-scroll-proportion="0.0" vertical-offset="33" max-vertical-offset="918">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#711#727#0" expanded="true" />
-          </folding>
+        <state line="32" column="40" selection-start="1303" selection-end="1303" vertical-scroll-proportion="0.0" vertical-offset="336" max-vertical-offset="1105">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/ShowEvent.java">
+    <entry file="file://$PROJECT_DIR$/src/locator/servcomm/ClientThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="23" selection-start="528" selection-end="532" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1462">
+        <state line="102" column="73" selection-start="3986" selection-end="3994" vertical-scroll-proportion="-6.230769" vertical-offset="1402" max-vertical-offset="10234">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/Room.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="169" column="32" selection-start="6037" selection-end="6037" vertical-scroll-proportion="0.0" vertical-offset="2469" max-vertical-offset="3757">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="18" selection-start="296" selection-end="303" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1751">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/Group.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="13" selection-start="74" selection-end="74" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/simple_map.xml">
+      <provider editor-type-id="text-editor">
+        <state line="47" column="33" selection-start="1694" selection-end="1694" vertical-scroll-proportion="-18.56" vertical-offset="335" max-vertical-offset="935">
+          <folding />
+        </state>
+      </provider>
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
-      <provider editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/GroupList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="13" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="27" selection-start="1530" selection-end="1530" vertical-scroll-proportion="0.0" vertical-offset="1065" max-vertical-offset="1564">
+        <state line="83" column="90" selection-start="1954" selection-end="1954" vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="3230">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/ShowEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="70" selection-start="1428" selection-end="1428" vertical-scroll-proportion="0.5168" vertical-offset="306" max-vertical-offset="1513">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="23" selection-start="4889" selection-end="4889" vertical-scroll-proportion="-15.038462" vertical-offset="1173" max-vertical-offset="2635">
+        <state line="90" column="44" selection-start="4251" selection-end="4251" vertical-scroll-proportion="0.0" vertical-offset="761" max-vertical-offset="1904">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/EventList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="30" selection-start="1942" selection-end="1942" vertical-scroll-proportion="0.0" vertical-offset="140" max-vertical-offset="901">
+          <folding>
+            <element signature="e#553#574#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/locator/localizadormq/EnrichedMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="0" selection-start="3672" selection-end="3672" vertical-scroll-proportion="0.0" vertical-offset="1181" max-vertical-offset="3740">
-          <folding>
-            <element signature="e#1758#2019#0" expanded="true" />
-            <element signature="e#2006#2007#0" expanded="true" />
-            <element signature="e#2151#5408#0" expanded="true" />
-            <element signature="e#5389#5390#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/locator/servcomm/ClientThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="0" selection-start="2077" selection-end="2077" vertical-scroll-proportion="0.33333334" vertical-offset="824" max-vertical-offset="10234">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/locator/servcomm/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="50" selection-start="1152" selection-end="1152" vertical-scroll-proportion="0.39716312" vertical-offset="381" max-vertical-offset="1088">
+        <state line="28" column="26" selection-start="778" selection-end="778" vertical-scroll-proportion="0.408" vertical-offset="0" max-vertical-offset="3808">
           <folding />
         </state>
       </provider>

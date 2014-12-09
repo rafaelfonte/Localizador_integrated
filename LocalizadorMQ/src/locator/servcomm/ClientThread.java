@@ -100,7 +100,7 @@ public class ClientThread extends AsyncTask<String,Void,String[]> {
                     System.out.println("Unsubscribing...");
                     resultStr = authenticate(act_args[0],act_args[1]);
                     if(resultStr[0].equals(Constants.ctHelloMsg))
-                        resultStr = subscribeEvent(act_args[0],act_args[2]);
+                        resultStr = unSubscribeEvent(act_args[0],act_args[2]);
                     break;
                 case Constants.ctMakeEventAct:
                     System.out.println("Making event...");

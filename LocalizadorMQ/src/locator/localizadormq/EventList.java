@@ -21,7 +21,7 @@ public class EventList extends ListActivity{
         for (final Event ev: Event.allEvents) {
             final Map<String, String> listItemMap = new HashMap<String, String>();
             listItemMap.put(label[0], ev.name);
-            listItemMap.put(label[1], ev.description + (User.mainUser.checkSubscription(ev) ? " (SUBSCRIBED)" : " (NOT SUBSCRIBED)"));
+            listItemMap.put(label[1], ev.description + " (" + ev.ownerId + ")");
             listOfValues.add(Collections.unmodifiableMap(listItemMap));
         }
         ListAdapter adapter = new SimpleAdapter(this,listOfValues,android.R.layout.simple_expandable_list_item_2,label,layoutID);
@@ -40,9 +40,14 @@ public class EventList extends ListActivity{
         // do something with the data
     	final Intent intent = new Intent(this, ShowEvent.class);
     	//String item = (String) getListAdapter().getItem(position);
-    	   Toast.makeText(this, position + " selected", Toast.LENGTH_LONG).show();
+    	   //Toast.makeText(this, position + " selected", Toast.LENGTH_LONG).show();
     	   intent.putExtra("ID", position);
     	   startActivity(intent);
       }
+    @Override
+    public void onBackPressed(){
+        setResult(1);
+        super.onBackPressed();
+    }
 }
 

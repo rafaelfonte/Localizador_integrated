@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
@@ -22,13 +23,16 @@ public class ShowEvent extends BasicMap{
 	TextView name;
 	Event showedEvent;
 	Intent intent;
+
+    Context mContext;
 	
 	@Override
     protected void init() {
+        mContext = this;
 		intent = getIntent();
 		
 		int id = intent.getIntExtra("ID", -1);
-		Toast.makeText(getApplicationContext(), "Event ID:"+ id, Toast.LENGTH_SHORT).show();
+		//Toast.makeText(getApplicationContext(), "Event ID:"+ id, Toast.LENGTH_SHORT).show();
 		showedEvent = Event.getEvent(id);
 		name = (TextView) findViewById(R.id.showEventName);	
 		name.setText(showedEvent.name);
@@ -42,14 +46,14 @@ public class ShowEvent extends BasicMap{
 		dateText = (TextView) findViewById(R.id.showEventDate);	
 		durationText = (TextView) findViewById(R.id.showEventDuration);	
 		SimpleDateFormat timeFormat = new SimpleDateFormat("dd/MM/yy HH:mm",Locale.getDefault());
-		SimpleDateFormat durationFormat = new SimpleDateFormat("HH:mm:ss",Locale.getDefault());
+		SimpleDateFormat durationFormat = new SimpleDateFormat("HH'h' mm'min'",Locale.getDefault());
 		
 		String str = timeFormat.format(showedEvent.date);
 		String durationStr = durationFormat.format(showedEvent.duration);
 		dateText.setText(str);
 		durationText.setText("Total duration: " + durationStr);
 		
-    	boolean subscribed = User.mainUser.checkSubscription(showedEvent);
+    	boolean subscribed = User.mainUser.checkSubscription(showedEvent,this);
     	subscribeButton = (Button) findViewById(R.id.subscribeButton);
     	subscribeText = (TextView) findViewById(R.id.subscribeText);
     	
@@ -68,9 +72,9 @@ public class ShowEvent extends BasicMap{
     	subscribeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
           	  Toast.makeText(getApplicationContext(), "Subscribing...", Toast.LENGTH_SHORT).show();
-          	  User.mainUser.unsubscribe(showedEvent);
-              System.out.println("The result for unsubscription is " + User.mainUser.checkSubscription(showedEvent));
-          	  setUnsubscribeButton();
+          	  boolean result = User.mainUser.subscribe(showedEvent,mContext);
+              if(result)
+          	    setUnsubscribeButton();
             }
         });
 	}
@@ -82,9 +86,9 @@ public class ShowEvent extends BasicMap{
     	subscribeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
           	  Toast.makeText(getApplicationContext(), "Unsubscribing...", Toast.LENGTH_SHORT).show();
-          	  User.mainUser.addEvent(showedEvent);
-                System.out.println("The result for subscription is " + User.mainUser.checkSubscription(showedEvent));
-          	  setSubscribeButton();
+          	  boolean result = User.mainUser.unsubscribe(showedEvent,mContext);
+              if(result)
+          	    setSubscribeButton();
             }
         });
 	}
